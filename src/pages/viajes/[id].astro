@@ -4,10 +4,10 @@ import data from "../../data/data.json";
 
 // Exporta la función getStaticPaths
 export async function getStaticPaths() {
-  const viajes = data.viajes; // Accede a la lista de viajes desde data.json
+  const viajes = data.viajes;
   return viajes.map((viaje) => ({
     params: { id: viaje.id }, // Define los parámetros para cada ruta
-    props: { viaje }, // Pasa los datos del viaje como props
+    props: { viaje }, // Pasa los datos del viaje como props (opcional)
   }));
 }
 
