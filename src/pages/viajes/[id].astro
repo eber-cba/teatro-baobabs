@@ -7,6 +7,12 @@ const viaje = viajes.find((v) => v.id === id);
 if (!viaje) {
   throw new Error("Viaje no encontrado");
 }
+export async function getStaticPaths() {
+  return viajes.map((viaje) => ({
+    params: { id: viaje.id }, // Define los parámetros para cada ruta
+    props: { viaje }, // Pasa los datos del viaje como props (opcional)
+  }));
+}
 ---
 
 <Layout title={`Baobabs - ${viaje.titulo}`}>
