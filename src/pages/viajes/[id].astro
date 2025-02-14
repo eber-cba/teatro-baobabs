@@ -1,17 +1,25 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import data from "../../data/data.json";
-const viajes = data.viajes;
-const { id } = Astro.params;
-const viaje = viajes.find((v) => v.id === id);
-if (!viaje) {
-  throw new Error("Viaje no encontrado");
-}
+
+// Exporta la función getStaticPaths
 export async function getStaticPaths() {
+  const viajes = data.viajes; // Accede a la lista de viajes desde data.json
   return viajes.map((viaje) => ({
     params: { id: viaje.id }, // Define los parámetros para cada ruta
-    props: { viaje }, // Pasa los datos del viaje como props (opcional)
+    props: { viaje }, // Pasa los datos del viaje como props
   }));
+}
+
+// Obtén el parámetro dinámico `id`
+const { id } = Astro.params;
+
+// Busca el viaje correspondiente
+const viaje = data.viajes.find((v) => v.id === id);
+
+// Si no se encuentra el viaje, muestra un error
+if (!viaje) {
+  throw new Error("Viaje no encontrado");
 }
 ---
 
