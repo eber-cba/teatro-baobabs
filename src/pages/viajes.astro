@@ -1,0 +1,74 @@
+---
+import data from "../data/data.json";
+import Layout from "../layouts/Layout.astro";
+
+interface Viaje {
+  id: string;
+  titulo: string;
+  descripcion: string;
+  fechas: string;
+  imagenes: string[];
+  detalles: string;
+  detallesExtendidos: string;
+  infoExtra: {
+    itinerario: string;
+    incluye: string;
+    precio: string;
+  };
+}
+
+const viajes: Viaje[] = data.viajes;
+---
+
+<Layout title="Viajes - Baobabs">
+  <section class="viajes container">
+    <h1>Viajes</h1>
+    {
+      viajes.map((viaje: Viaje) => (
+        <div class="viaje" data-key={viaje.id}>
+          <h2>{viaje.titulo}</h2>
+          <p>{viaje.descripcion}</p>
+          <p>
+            <strong>Fecha:</strong> {viaje.fechas}
+          </p>
+          <div class="viaje-images">
+            {viaje.imagenes.map((img: string, index: number) => (
+              <img
+                src={img}
+                alt={`${viaje.titulo} ${index + 1}`}
+                data-key={index}
+              />
+            ))}
+          </div>
+        </div>
+      ))
+    }
+    <img
+      src="https://picsum.photos/seed/picsum5/800/600"
+      alt="Prueba de imagen"
+    />
+  </section>
+  <style>
+    .viajes {
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .viaje {
+      margin-bottom: 2rem;
+      border: 1px solid #ccc;
+      padding: 1rem;
+      border-radius: 5px;
+    }
+    .viaje-images {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .viaje-images img {
+      max-width: 200px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+    }
+  </style>
+</Layout>

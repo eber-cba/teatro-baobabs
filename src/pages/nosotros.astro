@@ -1,0 +1,40 @@
+---
+import data from "../data/data.json";
+import Layout from "../layouts/Layout.astro";
+
+const profesor = data.equipo.profesor;
+---
+
+<Layout title="Nosotros - Baobabs">
+  <section class="nosotros container">
+    <h1>Nosotros</h1>
+    <div class="profesor">
+      <img src={profesor.imagen} alt={profesor.nombre} />
+      <div class="bio">
+        <h2>{profesor.nombre}</h2>
+        <p>{profesor.bio}</p>
+      </div>
+    </div>
+  </section>
+  <style>
+    .nosotros {
+      padding: 2rem 0;
+      text-align: center;
+    }
+    .profesor {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .profesor img {
+      max-width: 200px;
+      border-radius: 50%;
+    }
+    .bio {
+      max-width: 600px;
+      text-align: left;
+    }
+  </style>
+</Layout>

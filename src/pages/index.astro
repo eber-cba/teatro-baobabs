@@ -1,11 +1,121 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Layout from "../layouts/Layout.astro";
+import Carousel from "../components/carousel/Carousel.jsx";
+import Modal from "../components/Modal.astro";
+import Card from "../components/Card.astro";
+import data from "../data/data.json"; // Importa el JSON desde la carpeta src/data
+import Hero from "../components/Hero.astro";
+const { talleres, galeria } = data;
+const proximosEncuentros = talleres.slice(0, 3);
 ---
 
-<Layout>
-	<Welcome />
+<Layout title="Baobabs – Inicio">
+  <section>
+    <Hero />
+  </section>
+
+  <section>
+    <h2>Talleres Actuales</h2>
+    <Carousel items={talleres} client:only="react" />
+  </section>
+
+  <section>
+    <h2>Próximos Encuentros</h2>
+    <div class="grid">
+      {
+        proximosEncuentros.map((taller) => (
+          <div class="clickable-card" data-info={JSON.stringify(taller)}>
+            <Card item={taller} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section>
+    <h2>Galería Rápida</h2>
+    <div class="grid">
+      {
+        galeria.slice(0, 4).map((img) => (
+          <a
+            href={`/galeria/${img.id}`}
+            data-key={img.id}
+            style="text-decoration: none; color: inherit;"
+          >
+            <div class="clickable-gallery">
+              <img src={img.imagen} alt={img.titulo} />
+            </div>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Modal: inicialmente cerrado. Se abrirá con JavaScript -->
+  <Modal id="detailModal" open={false}>
+    <div id="modalContent"></div>
+  </Modal>
+
+  <style>
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      font-size: 1.5rem;
+    }
+    h2 {
+      color: var(--color-primario);
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .clickable-card {
+      cursor: pointer;
+    }
+    .clickable-gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+    /* Responsivo */
+    @media (max-width: 768px) {
+      .grid {
+        gap: 0.8rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+
+  <!-- Script para abrir el modal con información extendida -->
+  <script is:inline>
+    document.querySelectorAll(".clickable-card").forEach((card) => {
+      card.addEventListener("click", () => {
+        const item = JSON.parse(card.getAttribute("data-info"));
+        const modalContent = document.getElementById("modalContent");
+        modalContent.innerHTML = `
+          <h2>${item.titulo}</h2>
+          <img src="${item.imagen}" alt="${item.titulo}" style="width:100%; border-radius:8px;" />
+          <p>${item.detallesExtendidos}</p>
+          <ul>
+            <li><strong>Horario:</strong> ${item.horario}</li>
+            <li><strong>Cuota:</strong> ${item.cuota}</li>
+            <li><strong>Duración:</strong> ${item.infoExtra.duracion}</li>
+            <li><strong>Edad Recomendada:</strong> ${item.infoExtra.edadRecomendada}</li>
+            <li><strong>Materiales:</strong> ${item.infoExtra.materiales}</li>
+          </ul>
+        `;
+        document.getElementById("detailModal").showModal();
+      });
+    });
+  </script>
 </Layout>

@@ -1,0 +1,232 @@
+/* Contenedor principal */
+.simple-carousel {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Cada "item" del carrusel (una sola imagen + texto) */
+.carousel-item {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background-color: #ae445a; /* Color de fondo por si no hay imagen */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagen de fondo/slide */
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Texto superpuesto en la parte inferior */
+.carousel-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: #fff;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+}
+
+/* Flechas de navegación */
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  border: none;
+  color: #fff;
+  font-size: 1.8rem;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  outline: none;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.carousel-arrow:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow.left {
+  left: 10px;
+}
+
+.carousel-arrow.right {
+  right: 10px;
+}
+
+/* Ajustes responsive */
+@media (max-width: 576px) {
+  .carousel-item {
+    height: 200px;
+  }
+}
+/* 
+  Contenedor principal del carrusel, 
+  ocupa toda la pantalla (100vh) 
+  y un ancho del 100% 
+*/
+.side-carousel {
+  display: flex;
+  width: 100%;
+  height: 100vh; /* Ocupa el alto total de la ventana */
+  background: none; /* Fondo degradado */
+  overflow: hidden;
+}
+
+/* Columna lateral con miniaturas */
+.thumbnail-container {
+  width: 20%;
+  background-color: rgba(255, 255, 255, 0.1);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+
+/* Barra de scroll estilizada (opcional) */
+.thumbnail-container::-webkit-scrollbar {
+  width: 8px;
+}
+.thumbnail-container::-webkit-scrollbar-thumb {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+/* Cada miniatura */
+.thumbnail {
+  width: 80%;
+  margin: 10px 0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.3s, border 0.3s;
+  border: 2px solid transparent;
+  object-fit: cover;
+}
+.thumbnail:hover {
+  transform: scale(1.05);
+}
+.thumbnail.active {
+  border-color: #fff; /* Resalta la imagen seleccionada */
+}
+
+/* Sección principal (imagen grande + descripción) */
+.main-display {
+  width: 80%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Imagen grande */
+.main-image {
+  max-width: 100%;
+  max-height: 100%;
+  border-radius: 10px;
+  object-fit: cover;
+  /* Efecto de entrada (fade in) */
+  animation: fadeIn 1s;
+}
+
+/* Texto superpuesto */
+.info-overlay {
+  position: absolute;
+  bottom: 40px;
+  left: 50px;
+  color: #fff;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+  max-width: 40%;
+}
+
+.info-overlay h2 {
+  margin: 0 0 10px;
+  font-size: 2rem;
+}
+
+.info-overlay p {
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+}
+
+/* Botón "Más info" */
+.info-overlay button {
+  padding: 10px 20px;
+  background-color: #00b894;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+.info-overlay button:hover {
+  background-color: #009f82;
+}
+
+/* Keyframes para el fade in */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Responsivo --- */
+@media (max-width: 768px) {
+  .side-carousel {
+    flex-direction: column;
+  }
+  .thumbnail-container {
+    width: 100%;
+    height: 25vh;
+    flex-direction: row;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+  .thumbnail {
+    width: auto;
+    height: 80%;
+    margin: 0 10px;
+  }
+  .main-display {
+    width: 100%;
+    height: 75vh;
+  }
+  .info-overlay {
+    bottom: 20px;
+    left: 20px;
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 480px) {
+  .info-overlay h2 {
+    font-size: 1.5rem;
+  }
+  .info-overlay p {
+    font-size: 1rem;
+  }
+  .info-overlay button {
+    font-size: 0.9rem;
+  }
+}

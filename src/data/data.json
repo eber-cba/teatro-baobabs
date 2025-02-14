@@ -1,0 +1,246 @@
+{
+  "talleres": [
+    {
+      "id": "taller-1",
+      "titulo": "Teatro Contemporáneo",
+      "descripcion": "Explora técnicas modernas del teatro.",
+      "horario": "Lunes y Miércoles, 18:00 - 20:00",
+      "cuota": "$50 mensuales",
+      "imagen": "https://picsum.photos/id/1011/800/600",
+      "detalles": "Resumen breve para la card.",
+      "detallesExtendidos": "En este taller se combinan técnicas de actuación moderna con dinámicas de grupo. Se abordan ejercicios de improvisación, monólogo y trabajo en equipo. Cada sesión incluye calentamiento, práctica, análisis de escenas y discusión final. Se desarrollan habilidades expresivas y de comunicación.",
+      "infoExtra": {
+        "duracion": "8 semanas",
+        "edadRecomendada": "16+",
+        "materiales": "Ropa cómoda, libreta y bolígrafo"
+      }
+    },
+    {
+      "id": "taller-2",
+      "titulo": "Improvisación Teatral",
+      "descripcion": "Aprende a improvisar en el escenario.",
+      "horario": "Martes y Jueves, 19:00 - 21:00",
+      "cuota": "$45 mensuales",
+      "imagen": "https://picsum.photos/id/1025/800/600",
+      "detalles": "Resumen breve de improvisación.",
+      "detallesExtendidos": "Este taller se centra en liberar la creatividad mediante juegos y ejercicios de improvisación. Se fomenta la escucha activa, la espontaneidad y la confianza en el grupo. Ideal para romper la rigidez del guion y descubrir el poder del momento en escena.",
+      "infoExtra": {
+        "duracion": "6 semanas",
+        "edadRecomendada": "14+",
+        "materiales": "Ropa cómoda y mente abierta"
+      }
+    },
+    {
+      "id": "taller-3",
+      "titulo": "Actuación Clásica",
+      "descripcion": "Estudia los grandes clásicos del teatro.",
+      "horario": "Viernes, 17:00 - 20:00",
+      "cuota": "$60 mensuales",
+      "imagen": "https://picsum.photos/id/1035/800/600",
+      "detalles": "Resumen breve de actuación clásica.",
+      "detallesExtendidos": "Este taller profundiza en obras clásicas, enfatizando la dicción, entonación y conexión emocional. Se analizan textos de Shakespeare, Lope de Vega, entre otros, combinando teoría y práctica. Los alumnos aprenden a interpretar personajes complejos y a modular su voz para expresarse auténticamente.",
+      "infoExtra": {
+        "duracion": "10 semanas",
+        "edadRecomendada": "18+",
+        "materiales": "Textos clásicos, libreta y ganas de aprender"
+      }
+    },
+    {
+      "id": "taller-4",
+      "titulo": "Taller de Escenografía",
+      "descripcion": "Crea ambientes y escenarios impresionantes.",
+      "horario": "Sábados, 10:00 - 14:00",
+      "cuota": "$70 mensuales",
+      "imagen": "https://picsum.photos/id/1040/800/600",
+      "detalles": "Resumen breve de escenografía.",
+      "detallesExtendidos": "Aprende a diseñar y construir escenarios que potencien la narrativa de una obra. Se utilizan materiales reciclados y técnicas de iluminación para crear ambientes inmersivos. El taller combina teoría, análisis y práctica en taller, fomentando la creatividad y el trabajo en equipo.",
+      "infoExtra": {
+        "duracion": "12 semanas",
+        "edadRecomendada": "16+",
+        "materiales": "Material reciclable, herramientas básicas y entusiasmo"
+      }
+    },
+    {
+      "id": "taller-5",
+      "titulo": "Expresión Corporal",
+      "descripcion": "Descubre el poder del cuerpo en escena.",
+      "horario": "Domingos, 16:00 - 18:00",
+      "cuota": "$40 mensuales",
+      "imagen": "https://picsum.photos/id/1050/800/600",
+      "detalles": "Resumen breve de expresión corporal.",
+      "detallesExtendidos": "Enfocado en el lenguaje no verbal, este taller usa ejercicios de danza, estiramiento y relajación para mejorar la expresividad corporal. Ideal para liberar tensiones, ganar confianza y explorar el potencial comunicativo del cuerpo en escena.",
+      "infoExtra": {
+        "duracion": "5 semanas",
+        "edadRecomendada": "12+",
+        "materiales": "Ropa deportiva, colchoneta y actitud positiva"
+      }
+    }
+  ],
+  "galeria": [
+    {
+      "id": "img-1",
+      "titulo": "Ensayo en acción",
+      "imagen": "https://picsum.photos/id/1060/1200/800",
+      "detalle": "Captura la energía de un ensayo.",
+      "detalleExtendido": "En este ensayo, los actores se sumergen en la emoción del momento. La iluminación y el encuadre resaltan la pasión y el compromiso, haciendo de cada escena una experiencia única."
+    },
+    {
+      "id": "img-2",
+      "titulo": "Escenografía creativa",
+      "imagen": "https://picsum.photos/id/1070/1200/800",
+      "detalle": "La escenografía se integra a la narrativa.",
+      "detalleExtendido": "Cada detalle de la escenografía está pensado para evocar emociones. Los colores, texturas y luces trabajan juntos para transportar al espectador a un universo lleno de historias."
+    },
+    {
+      "id": "img-3",
+      "titulo": "Momentos de improvisación",
+      "imagen": "https://picsum.photos/id/1080/1200/800",
+      "detalle": "Un instante espontáneo y auténtico.",
+      "detalleExtendido": "La improvisación revela la creatividad sin límites de los actores. Esta imagen captura ese instante de inspiración y autenticidad que surge en escena."
+    },
+    {
+      "id": "img-4",
+      "titulo": "Taller al aire libre",
+      "imagen": "https://picsum.photos/id/1090/1200/800",
+      "detalle": "Un taller en plena naturaleza.",
+      "detalleExtendido": "El entorno natural se convierte en parte del espectáculo. La brisa, el sol y el paisaje aportan una inspiración única que se refleja en la creatividad de los participantes."
+    },
+    {
+      "id": "img-5",
+      "titulo": "Risas y emociones",
+      "imagen": "https://picsum.photos/id/1100/1200/800",
+      "detalle": "La comedia y el drama se funden en una imagen.",
+      "detalleExtendido": "Esta fotografía captura la dualidad del teatro: la risa y la emoción profunda conviven en cada gesto y expresión, haciendo visible la magia del escenario."
+    },
+    {
+      "id": "img-6",
+      "titulo": "Detrás de escena",
+      "imagen": "https://picsum.photos/id/1110/1200/800",
+      "detalle": "Preparativos antes de la función.",
+      "detalleExtendido": "Los momentos detrás de escena revelan la dedicación y el esfuerzo que se esconden tras la magia del espectáculo. Una mirada íntima a la creación teatral."
+    },
+    {
+      "id": "img-7",
+      "titulo": "Preparativos",
+      "imagen": "https://picsum.photos/id/1120/1200/800",
+      "detalle": "La pasión en cada detalle.",
+      "detalleExtendido": "Desde el vestuario hasta la iluminación, cada preparación es esencial para lograr una función impecable. Esta imagen resalta el compromiso del equipo."
+    },
+    {
+      "id": "img-8",
+      "titulo": "Encuentro en las sierras",
+      "imagen": "https://picsum.photos/id/1130/1200/800",
+      "detalle": "Una experiencia que une teatro y naturaleza.",
+      "detalleExtendido": "La sierra ofrece un escenario majestuoso en el que el teatro se funde con el paisaje. Una experiencia transformadora para los participantes."
+    },
+    {
+      "id": "img-9",
+      "titulo": "Intensivo de teatro",
+      "imagen": "https://picsum.photos/id/1140/1200/800",
+      "detalle": "La intensidad del aprendizaje en escena.",
+      "detalleExtendido": "Durante este intensivo, la pasión y el compromiso se viven en cada ejercicio. La imagen refleja la energía y la dedicación de todos los participantes."
+    },
+    {
+      "id": "img-10",
+      "titulo": "Atardecer teatral",
+      "imagen": "https://picsum.photos/id/1150/1200/800",
+      "detalle": "Colores cálidos que envuelven el escenario.",
+      "detalleExtendido": "El atardecer tiñe el escenario de tonos mágicos y nostálgicos, invitando a la reflexión y al ensueño. Una imagen que cierra el día con poesía."
+    }
+  ],
+  "viajes": [
+    {
+      "id": "viaje-1",
+      "titulo": "Intensivo en la Sierra 2023",
+      "descripcion": "Un viaje de 5 días para aprender y conectar con la naturaleza.",
+      "fechas": "20 - 25 de Marzo 2023",
+      "imagenes": [
+        "https://picsum.photos/seed/picsum1/800/600",
+        "https://picsum.photos/seed/picsum2/800/600"
+      ],
+      "detalles": "Resumen breve del viaje.",
+      "detallesExtendidos": "El viaje incluye talleres intensivos, excursiones y actividades culturales en plena naturaleza. Durante 5 días, los participantes experimentan una transformación personal y artística a través de retos, aprendizajes y momentos de conexión profunda con el entorno.",
+      "infoExtra": {
+        "itinerario": "Día 1: Llegada y bienvenida; Día 2: Taller intensivo; Día 3: Excursión; Día 4: Taller y convivio; Día 5: Cierre y evaluación.",
+        "incluye": "Transporte, alojamiento, comidas y material didáctico",
+        "precio": "$300 por persona"
+      }
+    },
+    {
+      "id": "viaje-2",
+      "titulo": "Retiro Teatral 2022",
+      "descripcion": "Un retiro para profundizar en técnicas teatrales en un entorno natural.",
+      "fechas": "10 - 15 de Agosto 2022",
+      "imagenes": [
+        "https://www.revistagente.com/wp-content/uploads/2021/01/michael-scott-620x464.jpg.webp",
+        "https://media.licdn.com/dms/image/D4D12AQG7DtXTEGPYhw/article-cover_image-shrink_720_1280/0/1673424723092?e=2147483647&v=beta&t=Nil-TXVdsBUE_reE2yQOUv91wUJKqKvy4_2a6tuCM0E"
+      ],
+      "detalles": "Resumen breve del retiro.",
+      "detallesExtendidos": "El retiro ofrece un ambiente relajado y enriquecedor donde se combinan clases intensivas, dinámicas grupales y momentos de reflexión. Es ideal para quienes desean escapar de la rutina y sumergirse en un proceso creativo profundo.",
+      "infoExtra": {
+        "itinerario": "Día 1: Llegada y bienvenida; Día 2-4: Talleres intensivos; Día 5: Actividades integradoras; Día 6: Evaluación y despedida.",
+        "incluye": "Estadía, alimentación y actividades complementarias",
+        "precio": "$350 por persona"
+      }
+    },
+    {
+      "id": "viaje-3",
+      "titulo": "Encuentro en las Cumbres",
+      "descripcion": "Una experiencia única de teatro y naturaleza en la sierra.",
+      "fechas": "5 - 9 de Julio 2023",
+      "imagenes": [
+        "https://picsum.photos/seed/picsum5/800/600",
+        "https://picsum.photos/seed/picsum6/800/600"
+      ],
+      "detalles": "Resumen breve del encuentro.",
+      "detallesExtendidos": "Reúne a artistas y amantes del teatro en un entorno montañoso. Durante 5 días se realizan talleres, excursiones y actividades que impulsan la creatividad y el trabajo en equipo, dejando recuerdos imborrables.",
+      "infoExtra": {
+        "itinerario": "Sesiones de taller por la mañana y excursiones por la tarde.",
+        "incluye": "Guía, alimentación y seguro de viaje",
+        "precio": "$400 por persona"
+      }
+    },
+    {
+      "id": "viaje-4",
+      "titulo": "Aventura Teatral",
+      "descripcion": "Un viaje de exploración teatral y descubrimiento personal.",
+      "fechas": "15 - 20 de Noviembre 2023",
+      "imagenes": [
+        "https://picsum.photos/seed/picsum7/800/600",
+        "https://picsum.photos/seed/picsum8/800/600"
+      ],
+      "detalles": "Resumen breve de la aventura.",
+      "detallesExtendidos": "Combina talleres de actuación e improvisación con actividades al aire libre en un entorno desafiante y estimulante, invitando a los participantes a explorar sus límites y crecer creativamente.",
+      "infoExtra": {
+        "itinerario": "Sesiones de taller intercaladas con actividades de aventura",
+        "incluye": "Equipo de aventura, alojamiento y alimentación",
+        "precio": "$450 por persona"
+      }
+    },
+    {
+      "id": "viaje-5",
+      "titulo": "Festival de Teatro en la Sierra",
+      "descripcion": "Una celebración del teatro en un entorno natural espectacular.",
+      "fechas": "1 - 4 de Diciembre 2023",
+      "imagenes": [
+        "https://picsum.photos/seed/picsum9/800/600",
+        "https://picsum.photos/seed/picsum10/800/600"
+      ],
+      "detalles": "Resumen breve del festival.",
+      "detallesExtendidos": "Reúne a artistas de diversas disciplinas en un ambiente festivo y creativo. Durante 4 días se ofrecen presentaciones, talleres interactivos y convivios artísticos, fusionando cultura y naturaleza para brindar una experiencia única.",
+      "infoExtra": {
+        "itinerario": "Actividades y presentaciones distribuidas en 4 días",
+        "incluye": "Entradas, actividades y convivios",
+        "precio": "$500 por persona"
+      }
+    }
+  ],
+  "equipo": {
+    "profesor": {
+      "nombre": "María Baobabs",
+      "bio": "María es una reconocida profesional del teatro con más de 15 años de experiencia en proyectos nacionales e internacionales. Su pasión por la enseñanza y la innovación en el arte escénico la han convertido en una referente para nuevos talentos.",
+      "imagen": "https://scontent.fcor16-1.fna.fbcdn.net/v/t39.30808-6/365310205_777911024336117_2934070302062583942_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF8t-BbxtBsw2DffAiT-VRSd9v-VXxQ3ZR32_5VfFDdlKCtEfYF0Iapg0OLOx8pDhU&_nc_ohc=L4i8JYTDtfcQ7kNvgHCpLp_&_nc_oc=Adi0CZ6tA2lxf1_wPF7mzv-3ou4GVD3PMc192KHyzBbm2GAPutM8jWCJh3B5-RPKUa8&_nc_zt=23&_nc_ht=scontent.fcor16-1.fna&_nc_gid=AlW1HMLHzmkaFYzGsKQgenQ&oh=00_AYBMtltxnOGae6JVWbUB8aze_12m0kfnsdl6gLw14YAu7w&oe=67AB4033",
+      "detalleExtendido": "Además de su carrera en el escenario, María ha impartido talleres en diversos países y ha sido invitada a festivales internacionales. Su enfoque pedagógico potencia la creatividad, técnica y confianza de cada participante, creando ambientes de aprendizaje transformadores."
+    }
+  }
+}

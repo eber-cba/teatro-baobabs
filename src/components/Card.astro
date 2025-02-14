@@ -1,0 +1,42 @@
+---
+const { item, onClick } = Astro.props;
+---
+
+<div class="card" onclick={onClick}>
+  <img src={item.imagen} alt={item.titulo} />
+  <div class="card-content">
+    <h3>{item.titulo}</h3>
+    <p>{item.detalles}</p>
+  </div>
+</div>
+<style>
+  .card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-5px);
+  }
+  .card img {
+    width: 100%;
+    height: auto;
+  }
+  .card-content {
+    padding: 1rem;
+  }
+  /* Responsivo */
+  @media (max-width: 768px) {
+    .card-content h3 {
+      font-size: 1.1rem;
+    }
+  }
+  @media (max-width: 480px) {
+    .card-content h3 {
+      font-size: 1rem;
+    }
+  }
+</style>

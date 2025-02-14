@@ -1,0 +1,39 @@
+---
+const { imageData, onClick } = Astro.props;
+---
+
+<div class="gallery-image" onclick={onClick}>
+  {
+    imageData?.imagen ? (
+      <img src={imageData.imagen} alt={imageData?.titulo || "Sin título"} />
+    ) : (
+      <p>Imagen no disponible</p>
+    )
+  }
+  <div class="titulo">{imageData?.titulo || "Sin título"}</div>
+</div>
+<style>
+  .gallery-image {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  .gallery-image img {
+    width: 100%;
+    height: auto;
+    transition: transform 0.4s ease;
+  }
+  .gallery-image:hover img {
+    transform: scale(1.1);
+  }
+  .gallery-image .titulo {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    color: white;
+    padding: 0.5rem;
+    text-align: center;
+  }
+</style>

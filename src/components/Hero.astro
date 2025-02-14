@@ -1,0 +1,276 @@
+<section class="hero">
+  <!-- Contenedor de fondo con efectos -->
+  <div class="hero-background">
+    <div class="hero-border-effect"></div>
+    <div class="hero-particles"></div>
+  </div>
+
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content animate-zoom-in">
+    <h1 class="hero-title animate-glow">
+      Bienvenidos a <span class="highlight">Baobabs</span>
+    </h1>
+    <p class="hero-subtitle animate-fade-in">
+      Donde el <span class="text-gradient">teatro cobra vida</span>
+    </p>
+    <div class="hero-cta animate-slide-up">
+      <button class="cta-button">Explora nuestros talleres</button>
+    </div>
+  </div>
+
+  <a href="#next-section" class="scroll-down-button">
+    <div class="scroll-arrow-container">
+      <svg
+        class="scroll-arrow"
+        xmlns="http://www.w3.org/2000/svg"
+        width="40"
+        height="40"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path d="M12 5v14M19 12l-7 7-7-7"></path>
+      </svg>
+      <div class="scroll-pulse"></div>
+    </div>
+  </a>
+</section>
+
+<style>
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    overflow: hidden;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(
+      circle at top,
+      rgba(255, 87, 34, 0.2),
+      rgba(0, 0, 0, 0.8)
+    );
+  }
+
+  .hero-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  .hero-border-effect {
+    position: absolute;
+    inset: -5px;
+    background: linear-gradient(
+      45deg,
+      rgba(255, 107, 107, 0.5),
+      rgba(174, 68, 90, 0.5),
+      rgba(108, 92, 231, 0.5)
+    );
+    mix-blend-mode: multiply;
+    animation: borderAnimation 6s linear infinite;
+  }
+  .hero-particles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* No background-image here */
+    opacity: 0.3;
+    animation: particlesChange 20s infinite linear; /* New animation */
+  }
+
+  @keyframes particlesChange {
+    0% {
+      background-image: url("../assets/JMS_7778-Mejorado-NR.jpg");
+    }
+    25% {
+      background-image: url("../assets/JMS_7784-Mejorado-NR.jpg");
+    }
+    50% {
+      background-image: url("../assets/JMS_7849.jpg");
+    }
+    75% {
+      background-image: url("../assets/JMS_7896-Mejorado-NR.jpg");
+    }
+    100% {
+      background-image: url("../assets/JMS_7778-Mejorado-NR.jpg"); /* Back to the first image */
+    }
+  }
+  .hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(
+      circle at center,
+      transparent 50%,
+      rgba(0, 0, 0, 0.4)
+    );
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    text-align: center;
+    padding: 2rem;
+    animation: blurZoom 1s ease-out;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .highlight {
+    color: #ffd700;
+  }
+
+  .text-gradient {
+    background: linear-gradient(45deg, #ffd700, #ff6b6b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 600;
+  }
+
+  .cta-button {
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    background: #ae445a;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+    text-transform: uppercase;
+  }
+
+  .cta-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 107, 107, 0.6);
+  }
+
+  .scroll-down-button {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .scroll-arrow {
+    width: 40px;
+    height: 40px;
+    stroke: white;
+    animation: floatArrow 2s infinite ease-in-out;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  }
+
+  .scroll-pulse {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  /* Animaciones */
+  @keyframes borderAnimation {
+    0% {
+      filter: hue-rotate(0deg);
+    }
+    100% {
+      filter: hue-rotate(360deg);
+    }
+  }
+
+  @keyframes particlesMove {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+
+  @keyframes floatArrow {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(10px);
+    }
+  }
+
+  @keyframes pulse {
+    0% {
+      transform: scale(0.8);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(1.5);
+      opacity: 0;
+    }
+  }
+
+  @keyframes blurZoom {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+      filter: blur(10px);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+      filter: blur(0);
+    }
+  }
+
+  .animate-glow {
+    animation: glowEffect 3s infinite alternate;
+  }
+
+  @keyframes glowEffect {
+    0% {
+      text-shadow:
+        0 0 10px rgba(255, 215, 0, 0.5),
+        0 0 20px rgba(255, 107, 107, 0.5);
+    }
+    100% {
+      text-shadow:
+        0 0 20px rgba(255, 215, 0, 1),
+        0 0 30px rgba(255, 107, 107, 1);
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+    .hero-subtitle {
+      font-size: 1.2rem;
+    }
+    .cta-button {
+      padding: 0.8rem 1.5rem;
+      font-size: 1rem;
+    }
+  }
+</style>

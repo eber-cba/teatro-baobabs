@@ -1,0 +1,37 @@
+<nav>
+  <a href="/">Inicio</a>
+  <a href="/talleres">Talleres</a>
+  <a href="/galeria">Galería</a>
+  <a href="/viajes">Viajes</a>
+  <a href="/nosotros">Nosotros</a>
+  <a href="/contacto">Contacto</a>
+  <style>
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+    nav a:hover {
+      color: #e74c3c;
+    }
+    /* Tablet */
+    @media (max-width: 768px) {
+      nav {
+        gap: 1rem;
+      }
+    }
+    /* Mobile */
+    @media (max-width: 480px) {
+      nav a {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</nav>

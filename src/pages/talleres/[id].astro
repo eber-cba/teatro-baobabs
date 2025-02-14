@@ -1,0 +1,54 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import data from "../../data/data.json";
+
+export async function getStaticPaths() {
+  const talleres = data.talleres;
+  return talleres.map((taller) => ({
+    params: { id: taller.id },
+  }));
+}
+
+const { id } = Astro.params;
+const taller = data.talleres.find((t) => t.id === id);
+
+if (!taller) {
+  throw new Error("Taller no encontrado");
+}
+---
+
+<Layout title={`Baobabs - ${taller.titulo}`}>
+  <h2>{taller.titulo}</h2>
+  <img src={taller.imagen} alt={taller.titulo} />
+  <p>{taller.detallesExtendidos}</p>
+  <ul>
+    <li><strong>Horario:</strong> {taller.horario}</li>
+    <li><strong>Cuota:</strong> {taller.cuota}</li>
+    <li><strong>Duración:</strong> {taller.infoExtra.duracion}</li>
+    <li>
+      <strong>Edad Recomendada:</strong>
+      {taller.infoExtra.edadRecomendada}
+    </li>
+    <li><strong>Materiales:</strong> {taller.infoExtra.materiales}</li>
+  </ul>
+  <style>
+    h2 {
+      color: var(--color-primario);
+    }
+    img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    p,
+    li {
+      line-height: 1.6;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</Layout>

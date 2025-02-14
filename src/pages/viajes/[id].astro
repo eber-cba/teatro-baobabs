@@ -1,0 +1,70 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import data from "../../data/data.json";
+const viajes = data.viajes;
+const { id } = Astro.params;
+const viaje = viajes.find((v) => v.id === id);
+if (!viaje) {
+  throw new Error("Viaje no encontrado");
+}
+---
+
+<Layout title={`Baobabs - ${viaje.titulo}`}>
+  <h2>{viaje.titulo}</h2>
+  <p>{viaje.detallesExtendidos}</p>
+  <p><strong>Fechas:</strong> {viaje.fechas}</p>
+  {
+    viaje.infoExtra && (
+      <div class="info-extra">
+        <p>
+          <strong>Itinerario:</strong> {viaje.infoExtra.itinerario}
+        </p>
+        <p>
+          <strong>Incluye:</strong> {viaje.infoExtra.incluye}
+        </p>
+        <p>
+          <strong>Precio:</strong> {viaje.infoExtra.precio}
+        </p>
+      </div>
+    )
+  }
+  <div class="imagenes">
+    {
+      viaje.imagenes.map((img, index) => (
+        <img data-key={index} src={img} alt={`Imagen ${index + 1}`} />
+      ))
+    }
+  </div>
+  <style>
+    h2 {
+      color: var(--color-primario);
+      text-align: center;
+    }
+    .info-extra p {
+      margin: 0.5rem 0;
+    }
+    .imagenes {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    .imagenes img {
+      width: 45%;
+      border-radius: 8px;
+    }
+    p {
+      line-height: 1.6;
+    }
+    @media (max-width: 768px) {
+      .imagenes img {
+        width: 48%;
+      }
+    }
+    @media (max-width: 480px) {
+      .imagenes img {
+        width: 100%;
+      }
+    }
+  </style>
+</Layout>
