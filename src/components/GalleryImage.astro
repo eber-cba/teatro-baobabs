@@ -1,8 +1,8 @@
 ---
-const { imageData, onClick } = Astro.props;
+const { imageData, onClick, index } = Astro.props;
 ---
 
-<div class="gallery-image" onclick={onClick}>
+<div class="gallery-image" onclick={onClick} data-index={index}>
   {
     imageData?.imagen ? (
       <img src={imageData.imagen} alt={imageData?.titulo || "Sin título"} />
@@ -12,28 +12,44 @@ const { imageData, onClick } = Astro.props;
   }
   <div class="titulo">{imageData?.titulo || "Sin título"}</div>
 </div>
+
 <style>
   .gallery-image {
     position: relative;
-    cursor: pointer;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition:
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
   }
   .gallery-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
     transition: transform 0.4s ease;
   }
   .gallery-image:hover img {
     transform: scale(1.1);
   }
-  .gallery-image .titulo {
+  .gallery-image:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  .titulo {
     position: absolute;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    left: 0;
     width: 100%;
-    color: white;
     padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 1.1rem;
     text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .gallery-image:hover .titulo {
+    opacity: 1;
   }
 </style>

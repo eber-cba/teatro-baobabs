@@ -18,37 +18,219 @@ if (!taller) {
 ---
 
 <Layout title={`Baobabs - ${taller.titulo}`}>
-  <h2>{taller.titulo}</h2>
-  <img src={taller.imagen} alt={taller.titulo} />
-  <p>{taller.detallesExtendidos}</p>
-  <ul>
-    <li><strong>Horario:</strong> {taller.horario}</li>
-    <li><strong>Cuota:</strong> {taller.cuota}</li>
-    <li><strong>Duración:</strong> {taller.infoExtra.duracion}</li>
-    <li>
-      <strong>Edad Recomendada:</strong>
-      {taller.infoExtra.edadRecomendada}
-    </li>
-    <li><strong>Materiales:</strong> {taller.infoExtra.materiales}</li>
-  </ul>
-  <style>
-    h2 {
-      color: var(--color-primario);
+  <div class="magic-container">
+    <div class="main-header">
+      <div class="image-wrapper">
+        <img
+          src={taller.imagen}
+          alt={taller.titulo}
+          class="floating-image"
+          style={{ filter: "drop-shadow(0 20px 30px rgba(74, 20, 140, 0.3))" }}
+        />
+      </div>
+      <div class="title-box">
+        <h1 class="magic-title">{taller.titulo}</h1>
+      </div>
+    </div>
+
+    <div class="details-container">
+      <div class="info-bubble" style="--i:1">
+        ⏳ {taller.infoExtra.duracion}
+      </div>
+      <div class="info-bubble" style="--i:2">
+        💖 {taller.infoExtra.edadRecomendada}
+      </div>
+      <div class="info-bubble" style="--i:3">
+        💰 {taller.cuota}
+      </div>
+      <div class="info-bubble" style="--i:4">
+        📆 {taller.horario}
+      </div>
+    </div>
+
+    <div class="content-box">
+      <p class="magic-text">{taller.detallesExtendidos}</p>
+
+      <div class="materials-wrapper">
+        {
+          taller.infoExtra.materiales
+            .split(", ")
+            .map((material) => <span class="material-pill">{material}</span>)
+        }
+      </div>
+
+      <div class="cta-wrapper">
+        <button class="heartbeat-button"> ✨ Quiero participar! </button>
+      </div>
+    </div>
+  </div>
+
+  <style is:global>
+    :root {
+      --color-magico: #4a148c;
+      --color-dorado: #790e89;
     }
-    img {
+
+    .magic-container {
+      padding: 2rem;
+      background: linear-gradient(45deg, #f8f5ff, #fff);
+      min-height: 100vh;
+    }
+
+    .main-header {
+      position: relative;
+      margin-bottom: 4rem;
+    }
+
+    .image-wrapper {
+      width: 85%;
+      margin: 0 auto;
+      border-radius: 30px;
+      transform: perspective(1000px) rotateX(10deg);
+      overflow: hidden;
+    }
+
+    .floating-image {
       width: 100%;
-      border-radius: 8px;
+      height: 400px;
+      object-fit: cover;
+      animation: float 6s ease-in-out infinite;
     }
-    p,
-    li {
-      line-height: 1.6;
+
+    .title-box {
+      position: absolute;
+      bottom: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: hsl(135, 44%, 43%)
+      padding: 1.5rem 3rem;
+      border-radius: 50px;
+      box-shadow: 0 15px 40px rgba(74, 20, 140, 0.2);
     }
-    ul {
-      list-style: none;
-      padding: 0;
+
+    .magic-title {
+      margin: 0;
+      color: white;
+      font-size: 2.5rem;
+      text-align: center;
+      text-shadow: 2px 2px 4px rgba(74, 20, 140, 0.3);
     }
-    li {
-      margin-bottom: 0.5rem;
+
+    .details-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 3rem 0;
+    }
+
+    .info-bubble {
+      background: rgba(74, 20, 140, 0.1);
+      backdrop-filter: blur(8px);
+      padding: 1.5rem;
+      border-radius: 20px;
+      text-align: center;
+      font-size: 1.1rem;
+      border: 2px solid var(--color-dorado);
+      transform: translateY(calc(var(--i) * 10px));
+      opacity: 0;
+      animation: appear 0.6s ease-out forwards;
+    }
+
+    .content-box {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      background: white;
+      border-radius: 30px;
+      box-shadow: 0 10px 40px rgba(74, 20, 140, 0.08);
+    }
+
+    .magic-text {
+      font-size: 1.1rem;
+      line-height: 1.8;
+      color: #444;
+      position: relative;
+      padding: 2rem;
+      background: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 10px,
+        rgba(255, 64, 129, 0.05) 10px,
+        rgba(255, 64, 129, 0.05) 20px
+      );
+    }
+
+    .materials-wrapper {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin: 2rem 0;
+      justify-content: center;
+    }
+
+    .material-pill {
+      background: var(--color-dorado);
+      color: white;
+      padding: 0.6rem 1.5rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+    }
+
+    .heartbeat-button {
+      background: linear-gradient(
+        45deg,
+        var(--color-magico),
+        var(--color-dorado)
+      );
+      color: white;
+      padding: 1.2rem 3rem;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      animation: heartbeat 1.5s infinite;
+      box-shadow: 0 10px 30px rgba(255, 64, 129, 0.3);
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-20px);
+      }
+    }
+
+    @keyframes appear {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes heartbeat {
+      0% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .magic-title {
+        font-size: 1.8rem;
+      }
+
+      .image-wrapper {
+        width: 95%;
+      }
     }
   </style>
 </Layout>

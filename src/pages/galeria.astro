@@ -1,5 +1,7 @@
 ---
+// galeria.astro
 import GalleryImage from "../components/GalleryImage.astro";
+import Modal from "../components/modal/Modal.jsx"; // Componente React
 import data from "../data/data.json";
 import Layout from "../layouts/Layout.astro";
 ---
@@ -7,32 +9,104 @@ import Layout from "../layouts/Layout.astro";
 <Layout title="Galería - Baobabs">
   <section class="galeria container">
     <h1>Galería</h1>
-    <div class="galeria-grid">
+    <div class="gallery-masonry">
       {
-        data.galeria.map((item) => (
+        data?.galeria?.map((item, index) => (
           <GalleryImage
             imageData={item}
-            onClick={() => console.log(item.titulo)}
+            index={index}
+            onClick={`window.dispatchOpenModal(${index})`}
           />
         ))
       }
     </div>
   </section>
-  <style>
-    .galeria {
-      padding: 2rem 0;
-      text-align: center;
+
+  <!-- Hidrata el componente Modal -->
+  <Modal images={data?.galeria} client:load />
+
+  <script type="module">
+    // Función para disparar el evento "open-modal" con el índice de la imagen
+    window.dispatchOpenModal = (index) => {
+      window.dispatchEvent(
+        new CustomEvent("open-modal", { detail: { index } })
+      );
+    };
+
+    // Función que abre el modal según el ID de la imagen (del query string)
+    function openModalByImageId(imageId) {
+      if (imageId && data?.galeria) {
+        // Buscamos sin conversión: Compara el ID del JSON con el del query (p. ej., "img-2")
+        const indexToOpen = data.galeria.findIndex((img) => img.id == imageId);
+        console.log("indexToOpen:", indexToOpen);
+        if (indexToOpen !== -1) {
+          window.dispatchOpenModal(indexToOpen);
+        } else {
+          console.log("Image ID not found in data.");
+        }
+      } else {
+        console.log("Data or imageId not yet available.");
+      }
     }
-    .galeria-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
-      padding: 1rem;
+
+    // Función para extraer el parámetro "id" de la URL
+    function getImageIdFromURL() {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get("id");
+    }
+
+    // Inicia la apertura del modal luego de la hidratación
+    window.addEventListener("astro:after-hydrate", () => {
+      console.log("astro:after-hydrate event triggered");
+      const imageId = getImageIdFromURL();
+      openModalByImageId(imageId);
+    });
+  </script>
+
+  <style>
+    /* Estilos para la galería */
+    .galeria {
+      padding: 3rem 0;
+      text-align: center;
+      font-family: "Montserrat", sans-serif;
+      background: var(--bg-color);
     }
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1.5rem;
-      color: #333;
+      font-size: 3rem;
+      margin-bottom: 2rem;
+      color: var(--primary-color);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+    .gallery-masonry {
+      column-count: 3;
+      column-gap: 1rem;
+      padding: 0 2rem;
+    }
+    .gallery-masonry > * {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+    }
+    @media (max-width: 1024px) {
+      .gallery-masonry {
+        column-count: 2;
+      }
+    }
+    @media (max-width: 600px) {
+      .gallery-masonry {
+        column-count: 1;
+      }
+    }
+    .gallery-masonry img {
+      width: 100%;
+      border-radius: 10px;
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+    .gallery-masonry img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
     }
   </style>
 </Layout>

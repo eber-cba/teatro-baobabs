@@ -5,4 +5,13 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
+  vite: {
+    optimizeDeps: {
+      include: ["gsap/ScrollTrigger", "gsap/EasePack"],
+      exclude: ["astro"],
+    },
+    ssr: {
+      noExternal: ["gsap"],
+    },
+  },
 });

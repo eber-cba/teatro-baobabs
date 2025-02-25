@@ -3,10 +3,14 @@ const { item, onClick } = Astro.props;
 ---
 
 <div class="card" onclick={onClick}>
-  <img src={item.imagen} alt={item.titulo} />
+  <div class="card-image">
+    <img src={item.imagen} alt={item.titulo} />
+  </div>
   <div class="card-content">
     <h3>{item.titulo}</h3>
     <p>{item.detalles}</p>
+    <p><strong>Horario:</strong> {item.horario}</p>
+    <p><strong>Cuota:</strong> {item.cuota}</p>
   </div>
 </div>
 <style>
@@ -14,22 +18,52 @@ const { item, onClick } = Astro.props;
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 5px 10px #3b08797e;
     cursor: pointer;
     transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: row; /* Asegura que la tarjeta esté en una fila */
+    width: 100%; /* Ajusta el ancho de la tarjeta */
+    max-width: 1000px; /* Tamaño máximo para todas las tarjetas */
+    align-items: center; /* Centra verticalmente el contenido */
+  }
+  .card-content h3 {
+    font-family: "Coiny", serif;
+    font-size: 2rem;
+    color: #493d9e;
   }
   .card:hover {
     transform: translateY(-5px);
   }
-  .card img {
+  .card-image {
+    width: 40%; /* Ajusta el ancho de la imagen */
+    height: auto; /* Ajusta la altura automáticamente */
+    overflow: hidden;
+  }
+  .card-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover; /* Asegura que la imagen cubra todo el contenedor */
   }
   .card-content {
     padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente el contenido */
+  }
+  .card-content > * {
+    margin: 0.5rem 0; /* Reduce el espaciado entre los elementos */
   }
   /* Responsivo */
   @media (max-width: 768px) {
+    .card {
+      flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    }
+    .card-image {
+      width: 100%; /* Ajusta el ancho de la imagen */
+      height: 200px; /* Tamaño fijo para todas las imágenes */
+    }
     .card-content h3 {
       font-size: 1.1rem;
     }

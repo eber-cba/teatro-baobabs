@@ -1,4 +1,5 @@
 ---
+// src/pages/talleres/index.astro
 import Layout from "../layouts/Layout.astro";
 import WorkshopCard from "../components/WorkshopCard.astro";
 import data from "../data/data.json";
@@ -7,38 +8,220 @@ const talleres = data.talleres;
 ---
 
 <Layout title="Baobabs - Talleres">
-  <h2>Talleres</h2>
-  <div class="grid">
-    {
-      talleres.map((taller) => (
-        <a
-          href={`/talleres/${taller.id}`}
-          data-key={taller.id}
-          style="text-decoration: none; color: inherit;"
-        >
-          <WorkshopCard taller={taller} />
-        </a>
-      ))
-    }
-  </div>
-  <style>
-    h2 {
-      color: var(--color-primario);
-      text-align: center;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-    @media (max-width: 768px) {
-      .grid {
-        gap: 0.8rem;
+  <div class="elegant-container">
+    <div class="header-wrapper">
+      <h1 class="delicate-title">
+        <span class="title-line">Explora nuestros</span>
+        <span class="title-line accent">Talleres</span>
+      </h1>
+      <div class="deco-line"></div>
+    </div>
+
+    <div class="cards-container">
+      {
+        talleres.map((taller) => (
+          <a href={`/talleres/${taller.id}`} class="elegant-card">
+            <WorkshopCard taller={taller} />
+            <div class="card-hover" />
+          </a>
+        ))
       }
+    </div>
+
+    <div class="background-blobs">
+      <div class="blob b1"></div>
+      <div class="blob b2"></div>
+    </div>
+  </div>
+
+  <script>
+    import { gsap } from "gsap";
+    import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+    // Código que se ejecuta cuando el componente se monta
+    document.addEventListener("DOMContentLoaded", () => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      // Animación título
+      const title = document.querySelector(".delicate-title");
+      if (title) {
+        gsap.from(title, {
+          duration: 1.2,
+          opacity: 0,
+          y: 40,
+          ease: "power4.out",
+        });
+      }
+
+      // Animación cards
+      const cards = gsap.utils.toArray(".elegant-card");
+      if (cards.length) {
+        gsap.from(cards, {
+          duration: 0.8,
+          opacity: 0,
+          y: 30,
+          stagger: 0.2,
+          ease: "sine.out",
+          scrollTrigger: {
+            trigger: ".cards-container",
+            start: "top 90%",
+            toggleActions: "play none none none",
+          },
+        });
+      }
+
+      // Animación blobs
+      const blobs = gsap.utils.toArray<HTMLElement>(".blob");
+      if (blobs.length) {
+        blobs.forEach((blob, i) => {
+          gsap.to(blob, {
+            duration: i % 2 ? 8 : 10,
+            x: `+=${i % 2 ? 50 : -40}`,
+            y: "+=30",
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut",
+          });
+        });
+      }
+    });
+  </script>
+
+  <style is:global>
+    :root {
+      --primary: #493d9e;
+      --secondary: #b2a5ff;
+      --soft-white: #f8f7fc;
     }
-    @media (max-width: 480px) {
-      .grid {
-        grid-template-columns: 1fr;
+
+    .elegant-container {
+      background: var(--soft-white);
+      min-height: 100vh;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .header-wrapper {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      text-align: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .delicate-title {
+      font-family: "Coiny", cursive;
+      font-weight: 400;
+      font-size: 3.5rem;
+      color: var(--primary);
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+    }
+
+    .delicate-title .accent {
+      color: var(--secondary);
+      display: inline-block;
+      position: relative;
+    }
+
+    .deco-line {
+      width: 120px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      margin: 0 auto;
+      border-radius: 2px;
+    }
+
+    .cards-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+
+    .elegant-card {
+      display: block;
+      text-decoration: none !important;
+      color: inherit;
+      margin-bottom: 2rem;
+      position: relative;
+      transition: transform 0.4s ease-out;
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(73, 61, 158, 0.08);
+    }
+
+    .elegant-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .elegant-card:hover .card-hover {
+      opacity: 1;
+    }
+
+    .card-hover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 12px;
+      background: linear-gradient(
+        45deg,
+        rgba(178, 165, 255, 0.1) 0%,
+        rgba(73, 61, 158, 0.05) 100%
+      );
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+
+    .background-blobs {
+      position: fixed;
+      width: 100vw;
+      height: 100vh;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    .blob {
+      position: absolute;
+      filter: blur(60px);
+      opacity: 0.15;
+      border-radius: 50%;
+    }
+
+    .b1 {
+      width: 400px;
+      height: 400px;
+      background: var(--primary);
+      top: 20%;
+      left: 10%;
+    }
+
+    .b2 {
+      width: 300px;
+      height: 300px;
+      background: var(--secondary);
+      top: 60%;
+      right: 10%;
+    }
+
+    @media (max-width: 768px) {
+      .delicate-title {
+        font-size: 2.5rem;
+      }
+
+      .elegant-container {
+        padding: 3rem 1rem;
+      }
+
+      .b1,
+      .b2 {
+        display: none;
       }
     }
   </style>

@@ -53,7 +53,9 @@
   align-items: center;
   justify-content: center;
   outline: none;
-  transition: background-color 0.3s ease, transform 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.3s ease;
 }
 
 .carousel-arrow:hover {
@@ -114,7 +116,9 @@
   margin: 10px 0;
   border-radius: 8px;
   cursor: pointer;
-  transition: transform 0.3s, border 0.3s;
+  transition:
+    transform 0.3s,
+    border 0.3s;
   border: 2px solid transparent;
   object-fit: cover;
 }

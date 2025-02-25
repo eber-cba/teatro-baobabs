@@ -1,0 +1,160 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Open+Sans:wght@400;600&display=swap");
+
+/* Fondo general y layout del Hero */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  /* Gradiente que combina dos violetas con un toque de amarillo dorado en el centro */
+  background: linear-gradient(135deg, #493d9e, #ff7f07 50%, #b2a5ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* Capa de fondo con partículas animadas */
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Contenedor de partículas */
+.hero-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+/* Estilo base para cada partícula */
+.particle {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: float 6s infinite ease-in-out;
+}
+
+/* Posicionamiento y tamaños variados para dar dinamismo */
+.particle1 {
+  width: 8px;
+  height: 8px;
+  top: 20%;
+  left: 15%;
+  animation-duration: 5s;
+}
+.particle2 {
+  width: 12px;
+  height: 12px;
+  top: 40%;
+  left: 70%;
+  animation-duration: 7s;
+}
+.particle3 {
+  width: 6px;
+  height: 6px;
+  top: 65%;
+  left: 30%;
+  animation-duration: 4s;
+}
+.particle4 {
+  width: 10px;
+  height: 10px;
+  top: 80%;
+  left: 50%;
+  animation-duration: 6s;
+}
+.particle5 {
+  width: 14px;
+  height: 14px;
+  top: 10%;
+  left: 80%;
+  animation-duration: 8s;
+}
+.particle6 {
+  width: 9px;
+  height: 9px;
+  top: 50%;
+  left: 25%;
+  animation-duration: 5.5s;
+}
+.particle7 {
+  width: 11px;
+  height: 11px;
+  top: 30%;
+  left: 55%;
+  animation-duration: 6.5s;
+}
+.particle8 {
+  width: 7px;
+  height: 7px;
+  top: 75%;
+  left: 80%;
+  animation-duration: 4.5s;
+}
+.particle9 {
+  width: 13px;
+  height: 13px;
+  top: 15%;
+  left: 40%;
+  animation-duration: 7.5s;
+}
+.particle10 {
+  width: 10px;
+  height: 10px;
+  top: 85%;
+  left: 20%;
+  animation-duration: 6s;
+}
+
+/* Animación para simular el movimiento flotante de las partículas */
+@keyframes float {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(20px, -20px);
+  }
+  100% {
+    transform: translate(0, 0);
+  }
+}
+
+/* Contenedor del contenido principal, posicionado sobre el fondo */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  padding: 0 20px;
+}
+
+/* Estilos para el título principal con nueva tipografía teatral */
+.hero-title {
+  font-size: 7rem;
+  margin: 0;
+  font-family: "Playfair Display", serif;
+  letter-spacing: 4px;
+}
+
+/* Estilos para el subtítulo */
+.hero-subtitle {
+  font-size: 2rem;
+  margin: 20px 0 40px;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+/* Estilos para el SVG animado (más grande) */
+.hero-svg {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
