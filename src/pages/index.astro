@@ -19,12 +19,11 @@ const proximosEncuentros = talleres.slice(0, 3);
 
   <!-- Sección de Talleres Actuales -->
   <section>
-    <h2>Talleres Actuales</h2>
     <Carousel items={talleres} client:only="react" />
   </section>
 
   <!-- Sección de Próximos Encuentros -->
-  <section>
+  <section class="proximos-encuentros">
     <h2>Próximos Encuentros</h2>
     <div class="grid">
       {

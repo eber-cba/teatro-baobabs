@@ -246,3 +246,26 @@
     margin-top: 60px;
   }
 }
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 1rem;
+  }
+  .hero-content {
+    padding: 1rem;
+  }
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+  .hero-svg {
+    width: 100%;
+    height: auto;
+  }
+  .hero-images-container .hero-background-image {
+    background-size: cover;
+    background-position: center;
+  }
+}
