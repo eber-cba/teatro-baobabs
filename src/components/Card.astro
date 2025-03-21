@@ -18,7 +18,7 @@ const { item, onClick } = Astro.props;
     background: white;
     border-radius: 8px;
     overflow: hidden;
-    box-shadow: 0 5px 10px #3b08797e;
+    box-shadow: 0 5px 10px #e672ae;
     cursor: pointer;
     transition: transform 0.3s ease;
     display: flex;
@@ -28,9 +28,9 @@ const { item, onClick } = Astro.props;
     align-items: center; /* Centra verticalmente el contenido */
   }
   .card-content h3 {
-    font-family: "Coiny", serif;
+    font-family: "FuturaBold", sans-serif;
     font-size: 2rem;
-    color: #493d9e;
+    color: #2fb979;
   }
   .card:hover {
     transform: translateY(-5px);
@@ -54,6 +54,9 @@ const { item, onClick } = Astro.props;
   }
   .card-content > * {
     margin: 0.5rem 0; /* Reduce el espaciado entre los elementos */
+  }
+  .card-content p {
+    font-family: "FuturaBook", sans-serif;
   }
   /* Responsivo */
   @media (max-width: 768px) {

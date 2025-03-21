@@ -67,8 +67,8 @@ if (!taller) {
 
   <style is:global>
     :root {
-      --color-magico: #4a148c;
-      --color-dorado: #790e89;
+      --color-magico: #e672ae;
+      --color-dorado: #2fb979;
     }
 
     .magic-container {
@@ -88,6 +88,7 @@ if (!taller) {
       border-radius: 30px;
       transform: perspective(1000px) rotateX(10deg);
       overflow: hidden;
+      box-shadow: 0 20px 30px rgba(230, 114, 174, 0.3);
     }
 
     .floating-image {
@@ -102,18 +103,18 @@ if (!taller) {
       bottom: -30px;
       left: 50%;
       transform: translateX(-50%);
-      background: hsl(135, 44%, 43%)
+      background: var(--color-dorado);
       padding: 1.5rem 3rem;
       border-radius: 50px;
-      box-shadow: 0 15px 40px rgba(74, 20, 140, 0.2);
+      box-shadow: 0 15px 40px rgba(230, 114, 174, 0.2);
     }
 
     .magic-title {
       margin: 0;
       color: white;
       font-size: 2.5rem;
+      font-family: "FuturaBold", sans-serif;
       text-align: center;
-      text-shadow: 2px 2px 4px rgba(74, 20, 140, 0.3);
     }
 
     .details-container {
@@ -124,13 +125,14 @@ if (!taller) {
     }
 
     .info-bubble {
-      background: rgba(74, 20, 140, 0.1);
+      background: rgba(230, 114, 174, 0.1);
       backdrop-filter: blur(8px);
       padding: 1.5rem;
       border-radius: 20px;
       text-align: center;
       font-size: 1.1rem;
-      border: 2px solid var(--color-dorado);
+      font-family: "FuturaBook", sans-serif;
+      border: 2px solid var(--color-magico);
       transform: translateY(calc(var(--i) * 10px));
       opacity: 0;
       animation: appear 0.6s ease-out forwards;
@@ -142,21 +144,22 @@ if (!taller) {
       padding: 2rem;
       background: white;
       border-radius: 30px;
-      box-shadow: 0 10px 40px rgba(74, 20, 140, 0.08);
+      box-shadow: 0 10px 40px rgba(230, 114, 174, 0.08);
     }
 
     .magic-text {
       font-size: 1.1rem;
       line-height: 1.8;
       color: #444;
+      font-family: "FuturaBook", sans-serif;
       position: relative;
       padding: 2rem;
       background: repeating-linear-gradient(
         -45deg,
         transparent,
         transparent 10px,
-        rgba(255, 64, 129, 0.05) 10px,
-        rgba(255, 64, 129, 0.05) 20px
+        rgba(230, 114, 174, 0.05) 10px,
+        rgba(230, 114, 174, 0.05) 20px
       );
     }
 
@@ -169,11 +172,12 @@ if (!taller) {
     }
 
     .material-pill {
-      background: var(--color-dorado);
+      background: var(--color-magico);
       color: white;
       padding: 0.6rem 1.5rem;
       border-radius: 20px;
       font-size: 0.9rem;
+      font-family: "FuturaRoundDemi", sans-serif;
       transition: all 0.3s ease;
     }
 
@@ -188,10 +192,11 @@ if (!taller) {
       border: none;
       border-radius: 30px;
       font-size: 1.2rem;
+      font-family: "FuturaBold", sans-serif;
       cursor: pointer;
       transition: all 0.3s ease;
       animation: heartbeat 1.5s infinite;
-      box-shadow: 0 10px 30px rgba(255, 64, 129, 0.3);
+      box-shadow: 0 10px 30px rgba(230, 114, 174, 0.3);
     }
 
     @keyframes float {

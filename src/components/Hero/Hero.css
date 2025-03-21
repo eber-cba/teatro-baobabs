@@ -6,13 +6,14 @@
   width: 100%;
   height: 100vh;
   overflow: hidden;
-  /* Gradiente que combina dos violetas con un toque de amarillo dorado en el centro */
-  background: linear-gradient(135deg, #493d9e, #ff7f07 50%, #b2a5ff);
+  /* Gradiente que combina los colores principales */
+  background: linear-gradient(135deg, #2fb979, #e672ae 50%, #2fb979);
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
-  font-family: "Open Sans", sans-serif;
+  /* Efecto sutil de sombra en la parte superior */
+  box-shadow: inset 0 8px 8px -8px rgba(0, 0, 0, 0.3);
 }
 
 /* Capa de fondo con partículas animadas */
@@ -22,7 +23,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1;
+  z-index: 2;
 }
 
 /* Contenedor de partículas */
@@ -131,16 +132,16 @@
 /* Contenedor del contenido principal, posicionado sobre el fondo */
 .hero-content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   text-align: center;
   padding: 0 20px;
 }
 
-/* Estilos para el título principal con nueva tipografía teatral */
+/* Estilos para el título principal */
 .hero-title {
   font-size: 7rem;
+  font-family: "FuturaBold", sans-serif;
   margin: 0;
-  font-family: "Playfair Display", serif;
   letter-spacing: 4px;
 }
 
@@ -149,7 +150,8 @@
   font-size: 2rem;
   margin: 20px 0 40px;
   letter-spacing: 1px;
-  font-weight: 600;
+  font-family: "FuturaRoundDemi", sans-serif;
+  font-weight: normal;
 }
 
 /* Estilos para el SVG animado (más grande) */
@@ -157,4 +159,90 @@
   display: block;
   margin: 0 auto;
   max-width: 100%;
+}
+
+/* Contenedor de imágenes del carrusel */
+.hero-images-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Imágenes de fondo */
+.hero-background-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.5s ease-in-out;
+}
+
+/* Overlay para dar transparencia al fondo */
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(47, 185, 121, 0.85),
+    rgba(230, 114, 174, 0.85) 50%,
+    rgba(47, 185, 121, 0.85)
+  );
+  z-index: 1;
+}
+
+/* Media queries para responsividad */
+@media (max-width: 1200px) {
+  .hero-title {
+    font-size: 5rem;
+  }
+  .hero-subtitle {
+    font-size: 1.8rem;
+  }
+  .hero-svg {
+    width: 400px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 4rem;
+  }
+  .hero-subtitle {
+    font-size: 1.5rem;
+  }
+  .hero-svg {
+    width: 300px;
+  }
+  .hero-content {
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 3rem;
+  }
+  .hero-subtitle {
+    font-size: 1.2rem;
+    margin: 15px 0 30px;
+  }
+  .hero-svg {
+    width: 250px;
+  }
+  .hero {
+    height: calc(100vh - 60px);
+    margin-top: 60px;
+  }
 }

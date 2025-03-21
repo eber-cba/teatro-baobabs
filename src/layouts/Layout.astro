@@ -9,23 +9,14 @@ import Footer from "../components/Footer.astro";
     <meta charset="UTF-8" />
     <title>{title}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Gantari:ital,wght@0,100..900;1,100..900&display=swap"
-      rel="stylesheet"
-    />
+
     <style>
       :root {
         /* Nueva paleta de colores */
-        --color-primario: #493d9e; /* Header y elementos principales */
-        --color-secundario: #4b4376; /* Para botones, enlaces o detalles */
+        --color-primario: #2fb979; /* Header y elementos principales */
+        --color-secundario: #e672ae; /* Para botones, enlaces o detalles */
 
-        --color-texto: #4e4e4e; /* Color del texto principal */
+        --color-texto: #2fb979; /* Color del texto principal */
       }
       * {
         box-sizing: border-box;
@@ -35,19 +26,70 @@ import Footer from "../components/Footer.astro";
       body {
         margin: 0;
         color: var(--color-texto);
-        font-family: "Gantari", serif;
+        font-family: "FuturaBook", sans-serif;
       }
 
-      h1 {
-        font-family: "Playfair Display", serif;
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "FuturaRound", sans-serif;
+      }
+
+      .title-emphasis {
+        font-family: "FuturaBold", sans-serif;
+      }
+
+      .subtitle-text {
+        font-family: "FuturaRoundDemi", sans-serif;
       }
 
       /* El título en el header con un color claro para contraste */
 
       /* Puedes usar el color secundario en enlaces o botones si quieres */
       a {
+        font-family: "FuturaRoundDemi", sans-serif;
         color: var(--color-secundario);
         text-decoration: none;
+      }
+
+      /* Definición de fuentes */
+      /* 1) Futura Round Regular */
+      @font-face {
+        font-family: "FuturaRound";
+        src: url("/fonts/FuturaRound.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      /* 2) Futura Round Demi */
+      @font-face {
+        font-family: "FuturaRoundDemi";
+        src: url("/fonts/FuturaRoundDemi.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      /* 3) Futura Book */
+      @font-face {
+        font-family: "FuturaBook";
+        src: url("/fonts/FuturaBook.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      /* 4) Futura Bold */
+      @font-face {
+        font-family: "FuturaBold";
+        src: url("/fonts/FuturaBold.ttf") format("truetype");
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
       }
 
       /* Responsivo */

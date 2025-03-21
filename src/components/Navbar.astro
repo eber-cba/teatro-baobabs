@@ -1,12 +1,12 @@
 ---
-import logo from "../assets/logo.svg";
+import logo from "../assets/logo.png";
 let isMenuOpen = false;
 ---
 
 <div class="header">
   <div class="logo-container">
     <div class="text-container">
-      <h1>BAOBABS</h1>
+      <h1 class="logo-text">BAOBABS</h1>
       <div class="separator"></div>
       <p class="subtitle">CLUB DE TEATRO</p>
     </div>
@@ -14,17 +14,25 @@ let isMenuOpen = false;
   </div>
   <nav>
     <ul class={isMenuOpen ? "open" : ""}>
-      <li><a href="/">Inicio</a></li>
-      <li><a href="/talleres">Talleres</a></li>
-      <li><a href="/galeria">Galería</a></li>
-      <li><a href="/viajes">Viajes</a></li>
-      <li><a href="/nosotros">Nosotros</a></li>
-      <li><a href="/contacto">Contacto</a></li>
+      <li class="nav-item"><a href="/" data-text="Inicio">Inicio</a></li>
+      <li class="nav-item">
+        <a href="/talleres" data-text="Talleres">Talleres</a>
+      </li>
+      <li class="nav-item">
+        <a href="/galeria" data-text="Galería">Galería</a>
+      </li>
+      <li class="nav-item"><a href="/viajes" data-text="Viajes">Viajes</a></li>
+      <li class="nav-item">
+        <a href="/nosotros" data-text="Nosotros">Nosotros</a>
+      </li>
+      <li class="nav-item">
+        <a href="/contacto" data-text="Contacto">Contacto</a>
+      </li>
     </ul>
     <div class="hamburger" id="menuButton">
-      <div class="bar"></div>
-      <div class="bar"></div>
-      <div class="bar"></div>
+      <div class="bar top"></div>
+      <div class="bar middle"></div>
+      <div class="bar bottom"></div>
     </div>
   </nav>
 </div>
@@ -34,116 +42,423 @@ let isMenuOpen = false;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 3%;
     color: white;
-    background-color: #493d9e;
-    font-size: 1.3rem;
-    overflow-x: hidden;
+    background: rgba(47, 185, 121, 0.95);
+    backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-sizing: border-box;
   }
+
   .logo-container {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 1.5rem;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    flex: 0 0 auto;
+    max-width: 35%;
   }
+
+  .logo-container:hover {
+    transform: scale(1.02);
+  }
+
   .text-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
   }
-  h1 {
+
+  .logo-text {
     margin: 0;
-    font-size: 3.6rem;
-    font-family: "Coiny", serif;
-    color: #f5f4fd;
+    font-size: 2.8rem;
+    font-family: "FuturaBold", sans-serif;
+    color: #ffffff;
+    text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    letter-spacing: 2px;
   }
+
   .separator {
     width: 100%;
     height: 2px;
-    background-color: #f5f4fd;
-    margin-bottom: 0.5rem;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      #ffffff 50%,
+      transparent 100%
+    );
+    margin: 0.5rem 0;
   }
+
   .subtitle {
     margin: 0;
-    font-size: 1.2rem;
-    color: #f5f4fd;
-    text-align: center;
+    font-size: 1.1rem;
+    font-family: "FuturaRoundDemi", sans-serif;
+    color: rgba(255, 255, 255, 0.9);
+    letter-spacing: 1.5px;
   }
+
   .logo {
-    height: 6rem; /* Ajusta el alto del logo para que coincida con el texto */
+    height: 5rem;
     width: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 10px rgba(230, 114, 174, 0.3));
   }
+
   nav {
     position: relative;
+    z-index: 2;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
   }
+
   nav ul {
     display: flex;
-    gap: 2rem;
+    gap: 1.2rem;
     list-style: none;
     padding: 0;
     margin: 0;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
   }
+
+  .nav-item {
+    position: relative;
+    overflow: visible;
+    padding: 0.5rem 0;
+  }
+
   nav a {
     color: white;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    font-family: "FuturaRound", sans-serif;
+    font-size: 1.2rem;
+    padding: 0.5rem 0.7rem;
+    position: relative;
+    transition: all 0.3s ease;
+    white-space: nowrap;
   }
+
+  nav a::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: #ffffff;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  nav a:hover::before {
+    width: 100%;
+  }
+
   nav a:hover {
-    color: #e74c3c;
+    color: #e672ae;
   }
+
   .hamburger {
     display: none;
-    flex-direction: column;
-    gap: 0.5rem;
+    width: 40px;
+    height: 30px;
+    position: relative;
     cursor: pointer;
+    z-index: 1001;
   }
-  .hamburger .bar {
-    width: 25px;
+
+  .bar {
+    position: absolute;
     height: 3px;
-    background-color: white;
+    width: 100%;
+    background: #ffffff;
+    border-radius: 2px;
     transition: all 0.3s ease;
   }
-  /* Tablet */
-  @media (max-width: 768px) {
+
+  .top {
+    top: 0;
+  }
+  .middle {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .bottom {
+    bottom: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .header {
+      padding: 0.8rem 3%;
+    }
     nav ul {
-      gap: 1rem;
+      gap: 0.8rem;
+    }
+    .logo-text {
+      font-size: 2.2rem;
+    }
+    .subtitle {
+      font-size: 1rem;
+    }
+    .logo {
+      height: 4rem;
     }
   }
-  /* Mobile */
-  @media (max-width: 480px) {
+
+  @media (max-width: 768px) {
+    .header {
+      padding: 0.5rem 3%;
+    }
     .hamburger {
-      display: flex;
+      display: block;
+    }
+    .logo-text {
+      font-size: 1.8rem;
+    }
+    .subtitle {
+      font-size: 0.9rem;
+    }
+    .logo {
+      height: 3.5rem;
+    }
+    .logo-container {
+      width: auto;
+      max-width: 40%;
+    }
+    nav {
+      margin-left: 0;
+      width: auto;
     }
     nav ul {
-      display: $ {
-        ismenuopen?"flex": "none";
-      }
+      margin: 0;
+      position: fixed;
+      top: 0;
+      left: -100%;
+      height: 100vh;
+      width: 80%;
       flex-direction: column;
-      position: absolute;
-      top: 100%;
-      right: 0;
-      background-color: #333;
+      background: rgba(47, 185, 121, 0.98);
+      backdrop-filter: blur(15px);
+      padding: 5rem 2rem;
+      transition: left 0.5s ease;
+      gap: 1.5rem;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    nav ul.open {
+      left: 0;
+    }
+    .nav-item {
+      opacity: 0;
       width: 100%;
-      padding: 1rem;
-      gap: 1rem;
+      text-align: center;
     }
     nav a {
-      font-size: 1rem;
+      display: block;
+      width: 100%;
+      padding: 1rem;
+      font-size: 1.4rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header {
+      padding: 0.5rem 2%;
+    }
+    .logo-container {
+      gap: 0.8rem;
+    }
+    .logo-text {
+      font-size: 1.5rem;
+    }
+    .subtitle {
+      font-size: 0.8rem;
+    }
+    .logo {
+      height: 3rem;
+    }
+    nav ul {
+      width: 100%;
+      padding: 4rem 1rem;
+    }
+    nav a {
+      font-size: 1.2rem;
     }
   }
 </style>
 
 <script>
+  import { gsap } from "gsap";
+
+  // Animación de entrada (quitamos y: -100 para no desplazar el header hacia abajo)
+  gsap.from(".header", {
+    // y: -100,  // Eliminado
+    opacity: 0,
+    duration: 1,
+    ease: "power4.out",
+  });
+
+  // Efecto de color del logo
+  const logoContainer = document.querySelector(".logo-container");
+  const logo = document.querySelector(".logo");
+
+  if (logoContainer && logo) {
+    // Animación de brillo al pasar el mouse
+    logoContainer.addEventListener("mouseenter", () => {
+      gsap.to(logo, {
+        filter: "drop-shadow(0 0 15px #e672ae) brightness(1.2)",
+        duration: 0.3,
+      });
+    });
+
+    logoContainer.addEventListener("mouseleave", () => {
+      gsap.to(logo, {
+        filter: "drop-shadow(0 0 10px rgba(230, 114, 174, 0.3))",
+        duration: 0.3,
+      });
+    });
+
+    // Efecto de cambio de color alternando
+    const tl = gsap.timeline({ repeat: -1 });
+    tl.to(logo, {
+      filter: "drop-shadow(0 0 10px rgba(230, 114, 174, 0.3))",
+      duration: 2,
+      ease: "power1.inOut",
+    }).to(logo, {
+      filter: "drop-shadow(0 0 10px rgba(47, 185, 121, 0.3))",
+      duration: 2,
+      ease: "power1.inOut",
+    });
+  }
+
+  // Animación del texto del logo
+  gsap.from(".logo-text", {
+    scale: 0.8,
+    rotation: -5,
+    opacity: 0,
+    duration: 1.2,
+    ease: "elastic.out(1, 0.5)",
+    delay: 0.3,
+  });
+
+  // Efecto flotante continuo para el logo
+  gsap.to(".logo", {
+    y: -5,
+    duration: 2,
+    repeat: -1,
+    yoyo: true,
+    ease: "power1.inOut",
+  });
+
+  // Animación del menú hamburguesa
   let isMenuOpen = false;
   const menuButton = document.getElementById("menuButton");
-  if (menuButton) {
-    menuButton.addEventListener("click", toggleMenu);
+  const navUl = document.querySelector("nav ul");
+  const navItems = document.querySelectorAll(".nav-item");
+  const timeline = gsap.timeline({ paused: true });
+
+  timeline
+    .to(".top", { y: 11, rotate: 45, duration: 0.3, ease: "power2.inOut" }, 0)
+    .to(".middle", { opacity: 0, duration: 0.2 }, 0)
+    .to(
+      ".bottom",
+      { y: -11, rotate: -45, duration: 0.3, ease: "power2.inOut" },
+      0
+    );
+
+  const animateMenuItems = (show: boolean) => {
+    gsap.to(navItems, {
+      opacity: show ? 1 : 0,
+      x: show ? 0 : -50,
+      duration: 0.3,
+      stagger: show ? 0.1 : 0,
+      ease: show ? "back.out(1.7)" : "power2.in",
+      delay: show ? 0.2 : 0,
+    });
+  };
+
+  if (menuButton && navUl) {
+    menuButton.addEventListener("click", () => {
+      isMenuOpen = !isMenuOpen;
+
+      if (isMenuOpen) {
+        timeline.play();
+        gsap.to(navUl, {
+          left: 0,
+          duration: 0.5,
+          ease: "power3.out",
+          onComplete: () => animateMenuItems(true),
+        });
+        document.body.style.overflow = "hidden";
+      } else {
+        timeline.reverse();
+        animateMenuItems(false);
+        gsap.to(navUl, {
+          left: "-100%",
+          duration: 0.5,
+          ease: "power3.in",
+          delay: 0.1,
+        });
+        document.body.style.overflow = "auto";
+      }
+    });
   }
-  function toggleMenu() {
-    isMenuOpen = !isMenuOpen;
-    const navUl = document.querySelector("nav ul");
-    if (navUl) {
-      navUl.classList.toggle("open", isMenuOpen);
-    }
-  }
+
+  // Efecto hover mejorado
+  document.querySelectorAll(".nav-item a").forEach((link) => {
+    link.addEventListener("mouseenter", () => {
+      gsap.to(link, {
+        color: "#e672ae",
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    });
+
+    link.addEventListener("mouseleave", () => {
+      gsap.to(link, {
+        color: "#ffffff",
+        duration: 0.3,
+        ease: "power2.out",
+      });
+    });
+  });
+
+  // Efecto al hacer scroll (quitamos cambio de padding para que no recorte el menú)
+  window.addEventListener("scroll", () => {
+    gsap.to(".header", {
+      background:
+        window.scrollY > 50
+          ? "rgba(47, 185, 121, 0.98)"
+          : "rgba(47, 185, 121, 0.95)",
+      // Eliminado: no más padding dinámico
+      duration: 0.5,
+      ease: "power2.out",
+    });
+
+    gsap.to(".logo-text", {
+      fontSize:
+        window.scrollY > 50
+          ? window.innerWidth <= 480
+            ? "1.5rem"
+            : window.innerWidth <= 768
+              ? "1.8rem"
+              : "2.2rem"
+          : window.innerWidth <= 480
+            ? "1.5rem"
+            : window.innerWidth <= 768
+              ? "1.8rem"
+              : "2.8rem",
+      duration: 0.5,
+    });
+  });
 </script>
