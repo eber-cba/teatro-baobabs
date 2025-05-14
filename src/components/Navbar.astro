@@ -19,17 +19,20 @@ let isMenuOpen = false;
     <ul class={isMenuOpen ? "open" : ""}>
       <li class="nav-item"><a href="/" data-text="Inicio">Inicio</a></li>
       <li class="nav-item">
-        <a href="/talleres" data-text="Talleres">Talleres</a>
+        <a href="/talleres" data-text="Talleres" class="nav-link">Talleres</a>
       </li>
       <li class="nav-item">
-        <a href="/galeria" data-text="Galería">Galería</a>
+        <a href="/eventos" data-text="Eventos" class="nav-link">Eventos</a>
+      </li>
+      <li class="nav-item">
+        <a href="/galeria" data-text="Galería" class="nav-link">Galería</a>
       </li>
       <li class="nav-item"><a href="/viajes" data-text="Viajes">Viajes</a></li>
       <li class="nav-item">
         <a href="/nosotros" data-text="Nosotros">Nosotros</a>
       </li>
       <li class="nav-item">
-        <a href="/contacto" data-text="Contacto">Contacto</a>
+        <a href="/contacto" data-text="Contacto" class="nav-link">Contacto</a>
       </li>
     </ul>
     <div class="hamburger" id="menuButton">
@@ -83,11 +86,11 @@ let isMenuOpen = false;
   .logo-text {
     margin: 0;
     font-size: 3.2rem;
-    font-family: "FuturaBold", sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 900;
     color: #ffffff;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     letter-spacing: 2px;
-    font-weight: 900;
   }
 
   .separator {
@@ -105,7 +108,8 @@ let isMenuOpen = false;
   .subtitle {
     margin: 0;
     font-size: 1.1rem;
-    font-family: "FuturaRoundDemi", sans-serif;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 500;
     color: rgba(255, 255, 255, 0.9);
     letter-spacing: 1.5px;
   }

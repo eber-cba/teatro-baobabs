@@ -242,5 +242,55 @@
       "imagen": "https://scontent.fcor16-1.fna.fbcdn.net/v/t39.30808-6/365310205_777911024336117_2934070302062583942_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeF8t-BbxtBsw2DffAiT-VRSd9v-VXxQ3ZR32_5VfFDdlKCtEfYF0Iapg0OLOx8pDhU&_nc_ohc=L4i8JYTDtfcQ7kNvgHCpLp_&_nc_oc=Adi0CZ6tA2lxf1_wPF7mzv-3ou4GVD3PMc192KHyzBbm2GAPutM8jWCJh3B5-RPKUa8&_nc_zt=23&_nc_ht=scontent.fcor16-1.fna&_nc_gid=AlW1HMLHzmkaFYzGsKQgenQ&oh=00_AYBMtltxnOGae6JVWbUB8aze_12m0kfnsdl6gLw14YAu7w&oe=67AB4033",
       "detalleExtendido": "Además de su carrera en el escenario, María ha impartido talleres en diversos países y ha sido invitada a festivales internacionales. Su enfoque pedagógico potencia la creatividad, técnica y confianza de cada participante, creando ambientes de aprendizaje transformadores."
     }
-  }
+  },
+  "events": [
+    {
+      "id": "taller-impro",
+      "title": "Taller de Improvisación Teatral",
+      "date": "2024-04-15",
+      "time": "19:00",
+      "location": "Teatro Municipal",
+      "address": "Av. Principal 123, Ciudad",
+      "price": "$1500",
+      "description": "Un taller intensivo de improvisación teatral donde aprenderás técnicas fundamentales para la creación espontánea y el desarrollo de personajes.",
+      "longDescription": "En este taller intensivo de improvisación teatral, exploraremos las técnicas fundamentales que todo actor debe conocer para desenvolverse con confianza en el escenario.\n\nContenido del taller:\n• Fundamentos de la improvisación\n• Creación de personajes\n• Desarrollo de historias espontáneas\n• Técnicas de escucha y aceptación\n• Ejercicios prácticos y juegos teatrales\n\nNo se requiere experiencia previa. Traer ropa cómoda y muchas ganas de divertirse.",
+      "image": "/images/events/impro.jpg",
+      "instructor": "María González",
+      "duration": "3 horas",
+      "maxParticipants": 20,
+      "currentParticipants": 12
+    },
+    {
+      "id": "workshop-escritura",
+      "title": "Workshop de Escritura Dramática",
+      "date": "2024-04-20",
+      "time": "18:00",
+      "location": "Centro Cultural",
+      "address": "Calle Cultural 456, Ciudad",
+      "price": "$2000",
+      "description": "Aprende las técnicas fundamentales de la escritura dramática y desarrolla tu propia obra teatral.",
+      "longDescription": "Este workshop está diseñado para escritores principiantes y avanzados que deseen explorar el mundo de la escritura dramática.\n\nTemas a cubrir:\n• Estructura dramática\n• Desarrollo de personajes\n• Diálogo efectivo\n• Construcción de escenas\n• Técnicas de edición\n\nIncluye material didáctico y certificado de participación.",
+      "image": "/images/events/escritura.jpg",
+      "instructor": "Carlos Rodríguez",
+      "duration": "4 horas",
+      "maxParticipants": 15,
+      "currentParticipants": 8
+    },
+    {
+      "id": "festival-teatro",
+      "title": "Festival de Teatro Experimental",
+      "date": "2024-05-01",
+      "time": "20:00",
+      "location": "Teatro Experimental",
+      "address": "Plaza de las Artes 789, Ciudad",
+      "price": "$2500",
+      "description": "Un festival único que reúne las mejores obras de teatro experimental de la región.",
+      "longDescription": "El Festival de Teatro Experimental es un evento único que celebra la innovación y la creatividad en las artes escénicas.\n\nPrograma:\n• 3 obras experimentales\n• Charlas con directores\n• Networking con artistas\n• Cóctel de bienvenida\n\nIncluye entrada a todas las obras y actividades del festival.",
+      "image": "/images/events/festival.jpg",
+      "instructor": "Colectivo Teatral",
+      "duration": "Todo el día",
+      "maxParticipants": 100,
+      "currentParticipants": 45
+    }
+  ]
 }

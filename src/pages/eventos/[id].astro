@@ -1,0 +1,482 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import ReservationModal from "../../components/ReservationModal.astro";
+import { gsap } from "gsap";
+
+// Datos hardcodeados (después se reemplazará con Contentful)
+const events = {
+  "taller-impro": {
+    id: "taller-impro",
+    title: "Taller de Improvisación Teatral",
+    date: "2024-04-15",
+    time: "19:00",
+    location: "Teatro Municipal",
+    address: "Av. Principal 123, Ciudad",
+    price: "$1500",
+    description:
+      "Un taller intensivo de improvisación teatral donde aprenderás técnicas fundamentales para la creación espontánea y el desarrollo de personajes.",
+    longDescription: `En este taller intensivo de improvisación teatral, exploraremos las técnicas fundamentales que todo actor debe conocer para desenvolverse con confianza en el escenario.
+
+    Contenido del taller:
+    • Fundamentos de la improvisación
+    • Creación de personajes
+    • Desarrollo de historias espontáneas
+    • Técnicas de escucha y aceptación
+    • Ejercicios prácticos y juegos teatrales
+    
+    No se requiere experiencia previa. Traer ropa cómoda y muchas ganas de divertirse.`,
+    image:
+      "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800&auto=format&fit=crop&q=60",
+    instructor: "María González",
+    duration: "3 horas",
+    maxParticipants: 20,
+    currentParticipants: 12,
+  },
+  "workshop-escritura": {
+    id: "workshop-escritura",
+    title: "Workshop de Escritura Dramática",
+    date: "2024-04-20",
+    time: "18:00",
+    location: "Centro Cultural",
+    address: "Calle Cultural 456, Ciudad",
+    price: "$2000",
+    description:
+      "Aprende las técnicas fundamentales de la escritura dramática y desarrolla tu propia obra teatral.",
+    longDescription: `Este workshop está diseñado para escritores principiantes y avanzados que deseen explorar el mundo de la escritura dramática.
+
+    Temas a cubrir:
+    • Estructura dramática
+    • Desarrollo de personajes
+    • Diálogo efectivo
+    • Construcción de escenas
+    • Técnicas de edición
+    
+    Incluye material didáctico y certificado de participación.`,
+    image:
+      "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&auto=format&fit=crop&q=60",
+    instructor: "Carlos Rodríguez",
+    duration: "4 horas",
+    maxParticipants: 15,
+    currentParticipants: 8,
+  },
+  "festival-teatro": {
+    id: "festival-teatro",
+    title: "Festival de Teatro Experimental",
+    date: "2024-05-01",
+    time: "20:00",
+    location: "Teatro Experimental",
+    address: "Plaza de las Artes 789, Ciudad",
+    price: "$2500",
+    description:
+      "Un festival único que reúne las mejores obras de teatro experimental de la región.",
+    longDescription: `El Festival de Teatro Experimental es un evento único que celebra la innovación y la creatividad en las artes escénicas.
+
+    Programa:
+    • 3 obras experimentales
+    • Charlas con directores
+    • Networking con artistas
+    • Cóctel de bienvenida
+    
+    Incluye entrada a todas las obras y actividades del festival.`,
+    image:
+      "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800&auto=format&fit=crop&q=60",
+    instructor: "Colectivo Teatral",
+    duration: "Todo el día",
+    maxParticipants: 100,
+    currentParticipants: 45,
+  },
+};
+
+export function getStaticPaths() {
+  return [
+    { params: { id: "taller-impro" } },
+    { params: { id: "workshop-escritura" } },
+    { params: { id: "festival-teatro" } },
+  ];
+}
+
+const { id } = Astro.params;
+const event = events[id as keyof typeof events];
+
+if (!event) {
+  return Astro.redirect("/404");
+}
+---
+
+<Layout title={event.title}>
+  <main class="event-detail">
+    <div class="hero-section" style={`background-image: url(${event.image})`}>
+      <div class="overlay"></div>
+      <div class="content">
+        <h1>{event.title}</h1>
+        <div class="event-meta">
+          <div class="meta-item">
+            <i class="fas fa-calendar"></i>
+            <span
+              >{
+                new Date(event.date).toLocaleDateString("es-ES", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })
+              }</span
+            >
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-clock"></i>
+            <span>{event.time}</span>
+          </div>
+          <div class="meta-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <span>{event.location}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="event-content">
+        <div class="main-info">
+          <section class="description">
+            <h2>Acerca del evento</h2>
+            <p>{event.longDescription}</p>
+          </section>
+
+          <section class="details">
+            <h2>Detalles</h2>
+            <div class="details-grid">
+              <div class="detail-item">
+                <i class="fas fa-user"></i>
+                <div>
+                  <h3>Instructor</h3>
+                  <p>{event.instructor}</p>
+                </div>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-hourglass-half"></i>
+                <div>
+                  <h3>Duración</h3>
+                  <p>{event.duration}</p>
+                </div>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-users"></i>
+                <div>
+                  <h3>Participantes</h3>
+                  <p>{event.currentParticipants} / {event.maxParticipants}</p>
+                </div>
+              </div>
+              <div class="detail-item">
+                <i class="fas fa-map"></i>
+                <div>
+                  <h3>Dirección</h3>
+                  <p>{event.address}</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <aside class="sidebar">
+          <div class="price-card">
+            <div class="price-header">
+              <h3>Precio</h3>
+              <span class="price">{event.price}</span>
+            </div>
+            <button class="reserve-button" id="reserveButton">
+              Reservar entrada
+            </button>
+            <div class="spots-left">
+              <div class="progress-bar">
+                <div
+                  class="progress"
+                  style={`width: ${(event.currentParticipants / event.maxParticipants) * 100}%`}
+                >
+                </div>
+              </div>
+              <p>
+                {event.maxParticipants - event.currentParticipants} lugares disponibles
+              </p>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <ReservationModal
+    eventTitle={event.title}
+    price={event.price}
+    alias="BAOBABS.TEATRO"
+    whatsappNumber="5491112345678"
+  />
+</Layout>
+
+<style>
+  .event-detail {
+    min-height: 100vh;
+  }
+
+  .hero-section {
+    height: 60vh;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    padding: 0 5%;
+    margin-bottom: 50px;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4));
+  }
+
+  .hero-section .content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    padding-bottom: 50px;
+  }
+
+  .hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .event-meta {
+    display: flex;
+    gap: 30px;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .meta-item i {
+    color: #2fb979;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .event-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 40px;
+  }
+
+  .main-info {
+    background: white;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  section {
+    margin-bottom: 40px;
+  }
+
+  section h2 {
+    color: #2fb979;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+  }
+
+  .description p {
+    line-height: 1.8;
+    color: #444;
+    white-space: pre-line;
+  }
+
+  .details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+  }
+
+  .detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .detail-item i {
+    color: #2fb979;
+    font-size: 1.5rem;
+  }
+
+  .detail-item h3 {
+    color: #333;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+  }
+
+  .detail-item p {
+    color: #666;
+  }
+
+  .sidebar {
+    position: sticky;
+    top: 100px;
+  }
+
+  .price-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .price-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .price-header h3 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  .price {
+    font-size: 2rem;
+    color: #2fb979;
+    font-weight: bold;
+  }
+
+  .reserve-button {
+    width: 100%;
+    padding: 15px;
+    background: #2fb979;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .reserve-button:hover {
+    background: #248c5f;
+  }
+
+  .spots-left {
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: #eee;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  .progress {
+    height: 100%;
+    background: #2fb979;
+    transition: width 0.3s ease;
+  }
+
+  .spots-left p {
+    color: #666;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 1024px) {
+    .hero-section h1 {
+      font-size: 2.8rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .event-content {
+      grid-template-columns: 1fr;
+    }
+
+    .hero-section {
+      height: 50vh;
+    }
+
+    .hero-section h1 {
+      font-size: 2.2rem;
+    }
+
+    .event-meta {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .details-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-section h1 {
+      font-size: 1.8rem;
+    }
+
+    .main-info {
+      padding: 20px;
+    }
+
+    .price-card {
+      padding: 20px;
+    }
+  }
+</style>
+
+<script>
+  // Animaciones de entrada
+  document.addEventListener("DOMContentLoaded", () => {
+    if (typeof gsap !== "undefined") {
+      gsap.from(".hero-section .content", {
+        y: 50,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out",
+      });
+
+      gsap.from(".main-info", {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        delay: 0.3,
+        ease: "power3.out",
+      });
+
+      gsap.from(".price-card", {
+        y: 30,
+        opacity: 0,
+        duration: 1,
+        delay: 0.5,
+        ease: "power3.out",
+      });
+    }
+
+    // Función para abrir el modal
+    const reserveButton = document.getElementById("reserveButton");
+    const modal = document.getElementById("reservationModal");
+
+    if (reserveButton && modal) {
+      reserveButton.addEventListener("click", () => {
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      });
+    }
+  });
+</script>

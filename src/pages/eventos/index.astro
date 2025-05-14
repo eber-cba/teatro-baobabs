@@ -1,0 +1,190 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import EventCard from "../../components/EventCard.astro";
+
+// Datos hardcodeados (después se reemplazará con Contentful)
+const events = [
+  {
+    id: "taller-impro",
+    title: "Taller de Improvisación Teatral",
+    date: "2024-04-15",
+    time: "19:00",
+    location: "Teatro Municipal",
+    address: "Av. Principal 123, Ciudad",
+    price: "$1500",
+    description:
+      "Un taller intensivo de improvisación teatral donde aprenderás técnicas fundamentales para la creación espontánea y el desarrollo de personajes.",
+    image:
+      "https://images.unsplash.com/photo-1507676184212-d03ab07a01bf?w=800&auto=format&fit=crop&q=60",
+  },
+  {
+    id: "workshop-escritura",
+    title: "Workshop de Escritura Dramática",
+    date: "2024-04-20",
+    time: "18:00",
+    location: "Centro Cultural",
+    address: "Calle Cultural 456, Ciudad",
+    price: "$2000",
+    description:
+      "Aprende las técnicas fundamentales de la escritura dramática y desarrolla tu propia obra teatral.",
+    image:
+      "https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?w=800&auto=format&fit=crop&q=60",
+  },
+  {
+    id: "festival-teatro",
+    title: "Festival de Teatro Experimental",
+    date: "2024-05-01",
+    time: "20:00",
+    location: "Teatro Experimental",
+    address: "Plaza de las Artes 789, Ciudad",
+    price: "$2500",
+    description:
+      "Un festival único que reúne las mejores obras de teatro experimental de la región.",
+    image:
+      "https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=800&auto=format&fit=crop&q=60",
+  },
+];
+---
+
+<Layout title="Eventos - BAOBABS">
+  <main class="events-page">
+    <div class="hero-section">
+      <div class="overlay"></div>
+      <div class="content">
+        <h1>Próximos Eventos</h1>
+        <p>Descubre y participa en nuestras actividades teatrales</p>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="events-grid">
+        {
+          events.map((event) => (
+            <EventCard
+              id={event.id}
+              title={event.title}
+              date={event.date}
+              time={event.time}
+              location={event.location}
+              address={event.address}
+              price={event.price}
+              description={event.description}
+              image={event.image}
+            />
+          ))
+        }
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .events-page {
+    min-height: 100vh;
+  }
+
+  .hero-section {
+    height: 40vh;
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+      url("https://images.unsplash.com/photo-1518834107812-67b0b7c58434?w=1600&auto=format&fit=crop&q=60");
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    margin-bottom: 50px;
+  }
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.6),
+      rgba(0, 0, 0, 0.4)
+    );
+  }
+
+  .hero-section .content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-section h1 {
+    font-size: 3.5rem;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .hero-section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .events-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    padding-bottom: 50px;
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      height: 30vh;
+    }
+
+    .hero-section h1 {
+      font-size: 2.5rem;
+    }
+
+    .hero-section p {
+      font-size: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-section h1 {
+      font-size: 2rem;
+    }
+
+    .events-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<script>
+  // Animaciones de entrada
+  document.addEventListener("DOMContentLoaded", () => {
+    gsap.from(".hero-section .content", {
+      y: 30,
+      opacity: 0,
+      duration: 1,
+      ease: "power3.out",
+    });
+
+    gsap.from(".event-card", {
+      y: 50,
+      opacity: 0,
+      duration: 0.8,
+      stagger: 0.2,
+      ease: "power3.out",
+      delay: 0.3,
+    });
+  });
+</script>
