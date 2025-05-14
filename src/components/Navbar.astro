@@ -1,5 +1,6 @@
 ---
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.svg";
+
 let isMenuOpen = false;
 ---
 
@@ -10,7 +11,9 @@ let isMenuOpen = false;
       <div class="separator"></div>
       <p class="subtitle">CLUB DE TEATRO</p>
     </div>
-    <img src={logo.src} alt="logo" class="logo" />
+    <div style="z-index: 12;">
+      <img src={logo.src} alt="logo" class="logo" />
+    </div>
   </div>
   <nav>
     <ul class={isMenuOpen ? "open" : ""}>
@@ -79,11 +82,12 @@ let isMenuOpen = false;
 
   .logo-text {
     margin: 0;
-    font-size: 2.8rem;
+    font-size: 3.2rem;
     font-family: "FuturaBold", sans-serif;
     color: #ffffff;
     text-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     letter-spacing: 2px;
+    font-weight: 900;
   }
 
   .separator {
@@ -107,10 +111,11 @@ let isMenuOpen = false;
   }
 
   .logo {
-    height: 5rem;
+    height: 6.5rem;
     width: auto;
     object-fit: contain;
-    filter: drop-shadow(0 0 10px rgba(230, 114, 174, 0.3));
+    filter: drop-shadow(0 0 10px rgba(230, 114, 174, 0.3)) brightness(0)
+      invert(1);
   }
 
   nav {
@@ -205,13 +210,13 @@ let isMenuOpen = false;
       gap: 0.8rem;
     }
     .logo-text {
-      font-size: 2.2rem;
+      font-size: 2.6rem;
     }
     .subtitle {
       font-size: 1rem;
     }
     .logo {
-      height: 4rem;
+      height: 5rem;
     }
   }
 
@@ -223,13 +228,13 @@ let isMenuOpen = false;
       display: block;
     }
     .logo-text {
-      font-size: 1.8rem;
+      font-size: 2.2rem;
     }
     .subtitle {
       font-size: 0.9rem;
     }
     .logo {
-      height: 3.5rem;
+      height: 4.5rem;
     }
     .logo-container {
       width: auto;
@@ -316,14 +321,16 @@ let isMenuOpen = false;
     // Animación de brillo al pasar el mouse
     logoContainer.addEventListener("mouseenter", () => {
       gsap.to(logo, {
-        filter: "drop-shadow(0 0 15px #e672ae) brightness(1.2)",
+        filter:
+          "drop-shadow(0 0 15px #e672ae) brightness(0) invert(1) brightness(1.2)",
         duration: 0.3,
       });
     });
 
     logoContainer.addEventListener("mouseleave", () => {
       gsap.to(logo, {
-        filter: "drop-shadow(0 0 10px rgba(230, 114, 174, 0.3))",
+        filter:
+          "drop-shadow(0 0 10px rgba(230, 114, 174, 0.3)) brightness(0) invert(1)",
         duration: 0.3,
       });
     });
@@ -331,11 +338,13 @@ let isMenuOpen = false;
     // Efecto de cambio de color alternando
     const tl = gsap.timeline({ repeat: -1 });
     tl.to(logo, {
-      filter: "drop-shadow(0 0 10px rgba(230, 114, 174, 0.3))",
+      filter:
+        "drop-shadow(0 0 10px rgba(230, 114, 174, 0.3)) brightness(0) invert(1)",
       duration: 2,
       ease: "power1.inOut",
     }).to(logo, {
-      filter: "drop-shadow(0 0 10px rgba(47, 185, 121, 0.3))",
+      filter:
+        "drop-shadow(0 0 10px rgba(47, 185, 121, 0.3)) brightness(0) invert(1)",
       duration: 2,
       ease: "power1.inOut",
     });
